@@ -1,0 +1,29 @@
+{block content}
+<h1 n:block=title>{$post->title}</h1>
+
+<div class="mb-3">
+	{if $user->isLoggedIn()}
+		<p>Přihlášen jako: <strong>{$user->getIdentity()->username}</strong>
+		(<a n:href="Sign:out">Odhlásit se</a>)</p>
+	{else}
+		<p>(<a n:href="Sign:in">Přihlásit se</a>)</p>
+	{/if}
+
+	{if $user->isInRole('admin')}
+		<p class="text-success">Jsi role Admin</p>
+	{elseif $user->isInRole('user')}
+		<p class="text-primary">Jsi role User</p>
+	{else}
+		<p class="text-muted">Nemáš roli - jsi pouze návštěvník</p>
+	{/if}
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<p class="text-muted">Publikováno: {$post->created_at|date:'j. n. Y H:i'}</p>
+		<hr>
+		<div>{$post->content}</div>
+	</div>
+</div>
+
+<a n:href="Home:default" class="btn btn-secondary mt-3">&larr; Zpět na seznam</a>
