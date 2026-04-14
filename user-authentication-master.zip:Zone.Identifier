@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://github.com/nette-examples/user-authentication
+HostUrl=https://codeload.github.com/nette-examples/user-authentication/zip/refs/heads/master
